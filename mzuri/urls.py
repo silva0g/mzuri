@@ -34,4 +34,18 @@ urlpatterns = [
     name = 'artist-sign-up'),
     url(r'^artist/$', views.artist_home, name='artist-home')
 
+
+    ### APIs para Clientes
+    #url(r'^api/customer/artists/$', apis.customer_get_artists),
+    #urlr(r'^api/customer/styles/(?P<artist_id>\d+)/$', apis.customer_get_styles),
+    #url(r'^api/customer/order/add$', apis.customer_add_order),
+    #url(r'^api/customer/order/latest/$', apis.customer_get_latest_order),
+    #url(r'^api/customer/artist/location/$', apis.customer_get_artist_location),
+
+    ### APIs para os artistas
+    #url(r'^api/artist/order/notification/(?P<last_request_time>.+)/$',
+    #apis.restaurant_order_notification),
+    #url(r'^api/artist/s')
+
+
 ] + static (settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
