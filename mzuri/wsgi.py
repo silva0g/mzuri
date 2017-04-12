@@ -14,3 +14,7 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mzuri.settings")
 
 application = get_wsgi_application()
+
+# USe whitenoise to serve static files on Heroku
+from whitenoise.django import DjangoWhitenoise
+application = DjangoWhitenoise(application)

@@ -15,7 +15,23 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from mzuriapp import views
+from django.contrib.auth import views as auth_views
+
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-]
+    url(r'^$', views.home, name='home'),
+    url(r'^artist/sign-in/$', auth_views.login,
+    {'template_name': 'artist/sign_in.html'},
+    name = 'artist-sign-in'),
+    url(r'^artist/sign-out/$', auth_views.logout,
+    {'next_page': '/'},
+    name = 'artist-sign-out'),
+    url(r'^artist/sign-up/$', views.artist_sign_up,
+    name = 'artist-sign-up'),
+    url(r'^artist/$', views.artist_home, name='artist-home')
+
+] + static (settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
